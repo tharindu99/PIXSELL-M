@@ -10,4 +10,6 @@ import { AdBlocksPage } from './ad-blocks';
     IonicPageModule.forChild(AdBlocksPage),
   ],
 })
-export class AdBlocksPageModule {}
+export class AdBlocksPageModule {
+
+}
