@@ -9,6 +9,7 @@ import { AboutPage } from '../pages/about/about';
 import { AdBlocksPage } from '../pages/ad-blocks/ad-blocks';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -20,6 +21,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation

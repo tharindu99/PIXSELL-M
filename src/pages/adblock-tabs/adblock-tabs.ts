@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { TopPage } from '../top/top';
-import { SuggestionsPage} from '../suggestions/suggestions';
-import { SearchPage } from '../search/search';
+
+/**
+ * Generated class for the AdblockTabsPage tabs.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -11,9 +15,9 @@ import { SearchPage } from '../search/search';
 })
 export class AdblockTabsPage {
 
-  topRoot:any = TopPage;
-  suggestionsRoot:any = SuggestionsPage;
-  searchRoot:any = SearchPage;
+  topAdblocksRoot = 'TopAdblocksPage'
+  suggestAdblocksRoot = 'SuggestAdblocksPage'
+  searchAdblocksRoot = 'SearchAdblocksPage'
 
 
   constructor(public navCtrl: NavController) {}
