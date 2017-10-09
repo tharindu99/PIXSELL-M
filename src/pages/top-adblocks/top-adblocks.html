@@ -9,6 +9,33 @@
 
 
 <ion-content padding>
+  <ion-card  *ngFor="let ADblock of ADblocks | async">
+      <ion-item>
+          <ion-icon name="arrow-round-up" item-start large ></ion-icon>
+          <h2>Museum of Football</h2>
+          <p>{{ADblock.siteName}} {{ADblock.blockName}} {{ADblock.blockId}}</p>
+        </ion-item>
+        <ion-item>
+            <!--<span item-left>18 min</span>
+            <span item-left>(2.6 mi)</span>-->
+            <button ion-button icon-left clear item-end>
+                <ion-icon name="analytics"></ion-icon>
+                Analysis
+              </button>
+            <button ion-button icon-left clear item-end>
+                <ion-icon name="cash"></ion-icon>
+                Invest
+            </button>
+          </ion-item> 
+  </ion-card>
+
+
+
+
+
+
+
+
   <ion-list>
     <ion-item class="text" *ngFor="let ADblock of ADblocks | async">
       {{ADblock | json}}

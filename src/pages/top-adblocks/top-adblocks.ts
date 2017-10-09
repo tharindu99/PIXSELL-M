@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
   
 })
 export class TopAdblocksPage {
-  ADblocks: Observable<any[]>; 
+  ADblocks: Observable<Adblocks[]>; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) 
   {
@@ -30,4 +30,17 @@ export class TopAdblocksPage {
     console.log('ionViewDidLoad TopAdblocksPage');
   }
 
+}
+
+export interface Adblocks {
+    availablePx:number,
+    basePrice: number,
+    blockId: string|number,
+    blockName: string,
+    duration: number,
+    numberOfPx: number,
+    ownerSetRisk: string,
+    siteName: string,
+    starts: string
+      
 }
