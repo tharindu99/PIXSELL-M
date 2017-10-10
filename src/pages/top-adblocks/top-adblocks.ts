@@ -24,6 +24,7 @@ export class TopAdblocksPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) 
   {
     this.ADblocks = afDB.list('Ad-blocks').valueChanges(); 
+    
   }
 
   ionViewDidLoad() {
@@ -37,7 +38,9 @@ export interface Adblocks {
     basePrice: number,
     blockId: string|number,
     blockName: string,
+    currentPrice: number,
     duration: number,
+    expectPrice : number,
     numberOfPx: number,
     ownerSetRisk: string,
     siteName: string,

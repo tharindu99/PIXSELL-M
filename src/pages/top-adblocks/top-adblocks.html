@@ -8,37 +8,29 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="no-scroll">
   <ion-card  *ngFor="let ADblock of ADblocks | async">
-      <ion-item>
-          <ion-icon name="arrow-round-up" item-start large ></ion-icon>
-          <h2>Museum of Football</h2>
+    <ion-grid>
+      <ion-row>
+         <ion-col col-2>
+            <ion-item>
+              <ion-icon padding-right name="arrow-round-up" item-start></ion-icon>
+            </ion-item>
+         </ion-col>
+         <ion-col col-8>
+          <h2>
+            <small>Rs</small> {{(ADblock.currentPrice/ADblock.numberOfPx)| number:'1.2-2'}} |
+            <small>Rs</small> {{(ADblock.expectPrice/ADblock.numberOfPx)| number:'1.2-2'}} |
+            <small>Risk</small> {{(ADblock.ownerSetRisk)}}
+          </h2>
           <p>{{ADblock.siteName}} {{ADblock.blockName}} {{ADblock.blockId}}</p>
-        </ion-item>
-        <ion-item>
-            <!--<span item-left>18 min</span>
-            <span item-left>(2.6 mi)</span>-->
-            <button ion-button icon-left clear item-end>
-                <ion-icon name="analytics"></ion-icon>
-                Analysis
-              </button>
-            <button ion-button icon-left clear item-end>
-                <ion-icon name="cash"></ion-icon>
-                Invest
-            </button>
-          </ion-item> 
+          <p>+{{(ADblock.currentPrice-ADblock.basePrice)/ADblock.currentPrice| number:'1.2-2'}}%</p>
+         </ion-col>
+         <ion-col col-2>
+           <round-progress  [current]="ADblock.numberOfPx - ADblock.availablePx" [max]="ADblock.numberOfPx" [radius]="20" [stroke]="5"></round-progress> 
+           <span class="icon-text-small">{{(100-(ADblock.availablePx/ADblock.numberOfPx)*100)| number:'1.2-2'}}%</span>       
+         </ion-col>
+     </ion-row>
+    </ion-grid>      
   </ion-card>
-
-
-
-
-
-
-
-
-  <ion-list>
-    <ion-item class="text" *ngFor="let ADblock of ADblocks | async">
-      {{ADblock | json}}
-    </ion-item>
-  </ion-list>
 </ion-content>

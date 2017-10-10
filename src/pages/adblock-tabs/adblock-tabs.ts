@@ -21,5 +21,5 @@ export class AdblockTabsPage {
 
 
   constructor(public navCtrl: NavController) {}
-
+  
 }
