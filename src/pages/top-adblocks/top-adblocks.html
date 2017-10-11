@@ -13,8 +13,8 @@
     <ion-grid>
       <ion-row>
          <ion-col col-2>
-            <ion-item>
-              <ion-icon padding-right name="arrow-round-up" item-start></ion-icon>
+            <ion-item >
+              <ion-icon [name]="(ADblock.progressRate > 0) ? 'arrow-round-up' :'arrow-round-down'"  padding-right  item-start [ngClass]="(ADblock.progressRate > 0) ? 'increase-icon' : 'decrease-icon'"></ion-icon>
             </ion-item>
          </ion-col>
          <ion-col col-8>
@@ -24,7 +24,7 @@
             <small>Risk</small> {{(ADblock.ownerSetRisk)}}
           </h2>
           <p>{{ADblock.siteName}} {{ADblock.blockName}} {{ADblock.blockId}}</p>
-          <p>+{{(ADblock.currentPrice-ADblock.basePrice)/ADblock.currentPrice| number:'1.2-2'}}%</p>
+          <p>+{{ADblock.progressRate| number:'1.2-2'}}%</p>
          </ion-col>
          <ion-col col-2>
            <round-progress  [current]="ADblock.numberOfPx - ADblock.availablePx" [max]="ADblock.numberOfPx" [radius]="20" [stroke]="5"></round-progress> 

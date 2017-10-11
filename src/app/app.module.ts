@@ -13,9 +13,8 @@ import { AdBlocksPage } from '../pages/ad-blocks/ad-blocks';
 import { AdblockTabsPage } from '../pages/adblock-tabs/adblock-tabs';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase,AngularFireDatabaseModule } from 'angularfire2/database';
 
 export const firbaseConfig = {
   apiKey: "AIzaSyAmCUFZR-oF8eqxhY24_iVtF_cZES4Tz8s",

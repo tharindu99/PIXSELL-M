@@ -23,8 +23,9 @@ export class TopAdblocksPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) 
   {
-    this.ADblocks = afDB.list('Ad-blocks').valueChanges(); 
-    
+    this.ADblocks = afDB.list('Ad-blocks', ref => ref.orderByChild('progressRate')
+          .limitToLast(1)).valueChanges();
+    //this.ADblocks = afDB.list('Ad-blocks').valueChanges(); 
   }
 
   ionViewDidLoad() {
@@ -43,6 +44,7 @@ export interface Adblocks {
     expectPrice : number,
     numberOfPx: number,
     ownerSetRisk: string,
+    progressRate:number,
     siteName: string,
     starts: string
       
