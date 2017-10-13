@@ -8,12 +8,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchAdblocksPage {
   
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor( public navCtrl: NavController, public navParams: NavParams) {
+    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchAdblocksPage');
   }
+}
+
+export interface Adblocks {
+  availablePx:number,
+  basePrice: number,
+  blockId: string|number,
+  blockName: string,
+  currentPrice: number,
+  duration: number,
+  expectPrice : number,
+  numberOfPx: number,
+  ownerSetRisk: string,
+  progressRate:number,
+  siteName: string,
+  starts: string
+    
 }
 
 

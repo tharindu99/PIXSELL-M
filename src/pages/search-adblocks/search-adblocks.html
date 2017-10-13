@@ -10,5 +10,7 @@
 
 
 <ion-content padding>
-  
+  <ion-card  *ngFor="let ADblock of ADblocks | async">
+    {{ADblock}}
+  </ion-card>
 </ion-content>
