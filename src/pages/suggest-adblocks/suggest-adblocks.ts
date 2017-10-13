@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
 /**
  * Generated class for the SuggestAdblocksPage page.
  *
@@ -14,12 +17,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'suggest-adblocks.html',
 })
 export class SuggestAdblocksPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ADblocks: Observable<Adblocks[]>; 
+  constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) {
+    this.ADblocks = afDB.list('Ad-blocks', ref => ref.limitToLast(10)).valueChanges();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SuggestAdblocksPage');
   }
 
+}
+
+export interface Adblocks {
+  availablePx:number,
+  basePrice: number,
+  blockId: string|number,
+  blockName: string,
+  currentPrice: number,
+  duration: number,
+  expectPrice : number,
+  numberOfPx: number,
+  ownerSetRisk: string,
+  progressRate:number,
+  siteName: string,
+  starts: string
+    
 }

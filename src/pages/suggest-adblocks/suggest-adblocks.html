@@ -8,6 +8,29 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="no-scroll">
+  <ion-card  *ngFor="let ADblock of ADblocks | async">
+    <ion-grid>
+      <ion-row>
+         <ion-col col-2>
+            <ion-item >
+              <ion-icon [name]="(ADblock.progressRate > 0) ? 'arrow-round-up' :'arrow-round-down'"  padding-right  item-start [ngClass]="(ADblock.progressRate > 0) ? 'increase-icon' : 'decrease-icon'"></ion-icon>
+            </ion-item>
+         </ion-col>
+         <ion-col col-8>
+          <h2>
+            <small>Rs</small> {{(ADblock.currentPrice/ADblock.numberOfPx)| number:'1.2-2'}} |
+            <small>Rs</small> {{(ADblock.expectPrice/ADblock.numberOfPx)| number:'1.2-2'}} |
+            <small>Risk</small> {{(ADblock.ownerSetRisk)}}
+          </h2>
+          <p>{{ADblock.siteName}} {{ADblock.blockName}} {{ADblock.blockId}}</p>
+          <p>{{ADblock.progressRate| number:'1.2-2'}}%</p>
+         </ion-col>
+         <ion-col col-2>
+           <round-progress  [current]="ADblock.numberOfPx - ADblock.availablePx" [max]="ADblock.numberOfPx" [radius]="20" [stroke]="5"></round-progress> 
+           <span class="icon-text-small">{{(100-(ADblock.availablePx/ADblock.numberOfPx)*100)| number:'1.2-2'}}%</span>       
+         </ion-col>
+     </ion-row>
+    </ion-grid>      
+  </ion-card>
 </ion-content>

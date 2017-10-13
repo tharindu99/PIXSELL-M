@@ -3,10 +3,9 @@ import { IonicPageModule } from 'ionic-angular';
 import { TopAdblocksPage } from './top-adblocks';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
-
 @NgModule({
   declarations: [
-    TopAdblocksPage,
+    TopAdblocksPage, 
   ],
   imports: [
     RoundProgressModule,

@@ -5,13 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 
-/**
- * Generated class for the TopAdblocksPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-top-adblocks',
@@ -24,8 +17,8 @@ export class TopAdblocksPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) 
   {
     this.ADblocks = afDB.list('Ad-blocks', ref => ref.orderByChild('progressRate')
-          .limitToLast(1)).valueChanges();
-    //this.ADblocks = afDB.list('Ad-blocks').valueChanges(); 
+          .limitToLast(10)).valueChanges();
+    //this.ADblocks = afDB.list('Ad-blocks').valueChanges();  
   }
 
   ionViewDidLoad() {
@@ -35,17 +28,17 @@ export class TopAdblocksPage {
 }
 
 export interface Adblocks {
-    availablePx:number,
-    basePrice: number,
-    blockId: string|number,
-    blockName: string,
-    currentPrice: number,
-    duration: number,
-    expectPrice : number,
-    numberOfPx: number,
-    ownerSetRisk: string,
-    progressRate:number,
-    siteName: string,
-    starts: string
-      
+  availablePx:number,
+  basePrice: number,
+  blockId: string|number,
+  blockName: string,
+  currentPrice: number,
+  duration: number,
+  expectPrice : number,
+  numberOfPx: number,
+  ownerSetRisk: string,
+  progressRate:number,
+  siteName: string,
+  starts: string
+    
 }

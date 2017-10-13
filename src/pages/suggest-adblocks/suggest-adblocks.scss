@@ -1,3 +1,24 @@
 page-suggest-adblocks {
+    .no-scroll {
+        .scroll-content {
+          overflow: hidden !important;
+        }
+      }
+    .icon-text-small-uparrow{
+        font-size: 10px !important; 
+        padding-left: 5px !important;
+    }
+    .icon-text-small{
+        font-size: 10px !important; 
+        padding-left: 5px !important;
+    }
+    .increase-icon{
+        color:#20F520 !important;
+        
 
+    }
+    .decrease-icon{
+        color:#ff0000 !important;
+        
+    }
 }
