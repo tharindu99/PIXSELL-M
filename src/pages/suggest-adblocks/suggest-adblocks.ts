@@ -18,8 +18,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SuggestAdblocksPage {
   ADblocks: Observable<Adblocks[]>; 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,afDB:AngularFireDatabase) {
-    this.ADblocks = afDB.list('Ad-blocks', ref => ref.limitToLast(10)).valueChanges();
+    this.ADblocks = afDB.list('Ad-blocks').valueChanges();  
   }
 
   ionViewDidLoad() {
@@ -27,6 +28,7 @@ export class SuggestAdblocksPage {
   }
 
 }
+
 
 export interface Adblocks {
   availablePx:number,
