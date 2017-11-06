@@ -11,19 +11,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdBlocksPage } from '../pages/ad-blocks/ad-blocks';
 import { AdblockTabsPage } from '../pages/adblock-tabs/adblock-tabs';
-
+ 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase,AngularFireDatabaseModule } from 'angularfire2/database';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 
 export const firbaseConfig = {
-  apiKey: "AIzaSyAmCUFZR-oF8eqxhY24_iVtF_cZES4Tz8s",
-  authDomain: "pixsell-m.firebaseapp.com",
-  databaseURL: "https://pixsell-m.firebaseio.com",
-  projectId: "pixsell-m",
-  storageBucket: "pixsell-m.appspot.com",
-  messagingSenderId: "85658630439"
+  apiKey: "AIzaSyCGepIUArhjSjgUTpkL877H60j6avh6zi0",
+  authDomain: "pixsell-m-temp.firebaseapp.com",
+  databaseURL: "https://pixsell-m-temp.firebaseio.com",
+  projectId: "pixsell-m-temp",
+  storageBucket: "pixsell-m-temp.appspot.com",
+  messagingSenderId: "706758479141"
 }
 
 @NgModule({
@@ -34,9 +34,6 @@ export const firbaseConfig = {
     AboutPage,
     AdBlocksPage,
     AdblockTabsPage
-    
-   
-
   ],
   imports: [
     BrowserModule,
@@ -51,7 +48,8 @@ export const firbaseConfig = {
     HomePage,
     LoginPage,
     AboutPage,
-    AdBlocksPage
+    AdBlocksPage,
+    AdblockTabsPage
   ],
   providers: [
     StatusBar,

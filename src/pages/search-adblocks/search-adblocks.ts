@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -8,8 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchAdblocksPage {
   
-  constructor( public navCtrl: NavController, public navParams: NavParams) {
-    
+  subscription;
+  
+  constructor(public afDB: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+    console.log("inside search page");
+    this.subscription = this.afDB.list('/Ad-blocks').subscribe(data => {
+      console.log(data);      
+    });    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchAdblocksPage');

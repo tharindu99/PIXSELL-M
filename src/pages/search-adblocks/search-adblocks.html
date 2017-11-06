@@ -10,7 +10,11 @@
 
 
 <ion-content padding>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  
   <ion-card  *ngFor="let ADblock of ADblocks | async">
     {{ADblock}}
   </ion-card>
+  
 </ion-content>
