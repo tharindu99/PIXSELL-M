@@ -12,9 +12,30 @@
 <ion-content padding>
 
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  
-  <ion-card  *ngFor="let ADblock of ADblocks | async">
-    {{ADblock}}
+
+  <ion-list inset>
+    <button ion-item *ngFor="let webSite of webSites"  (click)="showAdblocks(webSite)" ng-model="inputField">
+      <a>{{ webSite }}</a>
+    </button> 
+  </ion-list>
+
+  <ion-card *ngFor="let Adblock of Adblocks | async">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          {{Adblock}}
+        </ion-col>
+
+        <ion-col col-8>
+          {{Adblock}}
+        </ion-col>
+
+        <ion-col col-2>
+          {{Adblock}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
-  
+
+
 </ion-content>
