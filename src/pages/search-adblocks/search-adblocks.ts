@@ -9,21 +9,22 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'search-adblocks.html',
 })
 export class SearchAdblocksPage {
-  
+  click_status = true;
   subscription;
   webSites: Array<string> = [];
   loadedwebSites: Array<string> = [];
-  Adblocks: Observable<any[]>;
+  Adblocks;
+  //block: Adblocks;
   
   constructor(public afDB: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     
-    this.subscription = this.afDB.list('/Ad-blocks').valueChanges().subscribe(data => {      
-      for (var i = 0; i < data.length; i++) {
-        this.loadedwebSites.push(data[i].block.siteName);
-        console.log(data[i]);        
-      }        
-    });  
-    
+    this.subscription = this.afDB.list('/Ad-blocks').valueChanges()
+        .subscribe(data => { 
+            data.forEach (element => { 
+              //console.log(element['siteName'])
+            this.loadedwebSites.push(element['siteName']);
+          });       
+        });  
   }
 
   ionViewDidLoad() {
@@ -36,6 +37,7 @@ export class SearchAdblocksPage {
   }
 
   getItems(ev: any) {
+    this.click_status = true;
     this.initializewebSites();
         
     let input = ev.target.value;
@@ -52,15 +54,16 @@ export class SearchAdblocksPage {
   }
 
   showAdblocks(webSite: string) {
+    this.click_status = false;
     console.log("selected site : ", webSite);
-   
-    this.Adblocks = this.afDB.list('Ad-blocks', ref => ref.orderByChild('siteName').equalTo(webSite)).valueChanges();
-
-    console.log(this.Adblocks);
+    this.afDB.list('Ad-blocks', 
+        ref => ref.orderByChild('siteName').equalTo(webSite)).valueChanges()
+                  .subscribe(blocks =>this.Adblocks = blocks)
+           
      
   }
 }
-
+/*
 export interface Adblocks {
   availablePx:number,
   basePrice: number,
@@ -76,3 +79,4 @@ export interface Adblocks {
   starts: string
     
 }
+*/
