@@ -13,15 +13,13 @@ export class SearchAdblocksPage {
   subscription;
   webSites: Array<string> = [];
   loadedwebSites: Array<string> = [];
-  Adblocks;
-  //block: Adblocks;
+  ADblocks;
   
   constructor(public afDB: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     
     this.subscription = this.afDB.list('/Ad-blocks').valueChanges()
         .subscribe(data => { 
             data.forEach (element => { 
-              //console.log(element['siteName'])
             this.loadedwebSites.push(element['siteName']);
           });       
         });  
@@ -55,14 +53,29 @@ export class SearchAdblocksPage {
 
   showAdblocks(webSite: string) {
     this.click_status = false;
-    console.log("selected site : ", webSite);
-    this.afDB.list('Ad-blocks', 
-        ref => ref.orderByChild('siteName').equalTo(webSite)).valueChanges()
-                  .subscribe(blocks =>this.Adblocks = blocks)
-           
-     
+
+    this.afDB.list('Ad-blocks', ref => ref.orderByChild('siteName').equalTo(webSite))
+      .valueChanges()
+      .subscribe(block => {
+        this.ADblocks = block;       
+        this.getRecordDetails(block[0]['blockId']);
+    });
+    
   }
+
+  getRecordDetails(id: string) {
+    
+    this.afDB.list('/Records', ref => ref.orderByChild('blockId').equalTo(id).limitToLast(1))
+      .valueChanges()
+      .subscribe(record => {
+        this.ADblocks[0]['records'] = record;
+        console.log("final : ", this.ADblocks);        
+    }); 
+    
+  }  
+
 }
+
 /*
 export interface Adblocks {
   availablePx:number,
