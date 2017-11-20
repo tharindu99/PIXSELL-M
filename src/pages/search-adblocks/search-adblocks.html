@@ -11,46 +11,49 @@
     
     <ion-content padding>
     
-      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
     
       <ion-list inset *ngIf="click_status">
-        <button ion-item *ngFor="let webSite of webSites"  (click)="showAdblocks(webSite)" ng-model="inputField">
+        <button ion-item *ngFor="let webSite of webSites"  (click)="showAdblocks(webSite)">
           <a>{{ webSite }}</a>
         </button> 
       </ion-list>
+
+      <p *ngIf="showHeading">Ad Blocks of <i>{{ searchedSite }}</i></p>
     
-      <ion-card *ngFor="let ADblock of ADblocks">
-        <ion-grid>
+      <div *ngFor="let ADblock of ADblocks">
+        <div *ngFor="let Record of Records">
+          <ion-card >
+            <ion-grid>    
+              <ion-row>
 
-          <ion-row>
-            <ion-col col-2>
-              <ion-item >
-                
-                <!-- <ion-icon [name]="(ADblock.progressRate > 0) ? 'arrow-round-up' :'arrow-round-down'"  padding-right  item-start [ngClass]="(ADblock.progressRate > 0) ? 'increase-icon' : 'decrease-icon'"></ion-icon> -->
-              </ion-item>
-            </ion-col>
+                <ion-col col-2>
+                  <ion-item >
+                      <ion-icon [name]="(Record.progressRate > 0) ? 'arrow-round-up' :'arrow-round-down'"  padding-right  item-start [ngClass]="(Record.progressRate > 0) ? 'increase-icon' : 'decrease-icon'"></ion-icon>
+                  </ion-item>
+                </ion-col>
+    
+                <ion-col col-8>
+                <h2>    
+                  <small>Rs</small> {{(Record.pricePerPx/(ADblock.width*ADblock.height))| number:'1.2-2'}} |
+                  <!-- <small>Rs</small> {{(ADblock.expectPrice/(ADblock.width*ADblock.height))| number:'1.2-2'}} --> some value| 
+                  <small>Risk</small> {{(ADblock.ownerSetRisk)}}
+                </h2>
+                <p>{{ADblock.siteName}} | {{ADblock.blockName}}</p>
+                <p>{{Record.progressRate| number:'1.2-2'}}%</p>
+                </ion-col>
+    
+                <ion-col col-2>
+                  <round-progress  [current]="(ADblock.width*ADblock.height) - Record.availablePx" [max]="(ADblock.width*ADblock.height)" [radius]="20" [stroke]="5"></round-progress> 
+                  <span class="icon-text-small">{{(100-(Record.availablePx/(ADblock.width*ADblock.height))*100)| number:'1.2-2'}}%</span>       
+                </ion-col>
 
-            <ion-col col-8>
-            <h2>
+             </ion-row>    
+            </ion-grid> 
+          </ion-card>
+        </div>
+      </div>
 
-              <!-- <small>Rs</small> {{(Detail.pricePerPx/(ADblock.width*ADblock.height))| number:'1.2-2'}} | -->
-              <!-- <small>Rs</small> {{(ADblock.expectPrice/(ADblock.width*ADblock.height))| number:'1.2-2'}} |                 -->
-            </h2>
-            <!-- <p>{{ADblock['siteName']}}</p> -->
-            <p>{{ADblock.siteName}}</p>
-            <p>{{ADblock.blockName}}</p>
-            <p>{{ADblock.records}}</p>
-            <!-- <p>{{ADblock['records']| number:'1.2-2'}}%</p> -->
-            </ion-col>
-
-            <ion-col col-2>
-              <!-- <round-progress  [current]="(ADblock.width*ADblock.height) - ADblock.records.availablePx" [max]="(ADblock.width*ADblock.height)" [radius]="20" [stroke]="5"></round-progress> 
-              <span class="icon-text-small">{{(100-(ADblock.records.availablePx/(ADblock.width*ADblock.height))*100)| number:'1.2-2'}}%</span> -->
-            </ion-col>
-         </ion-row>
-
-        </ion-grid> 
-      </ion-card>
     
     
     </ion-content>
