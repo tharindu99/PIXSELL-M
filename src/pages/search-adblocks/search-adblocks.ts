@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -19,13 +18,14 @@ export class SearchAdblocksPage {
   Records;
 
   constructor(public afDB: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-    
     this.subscription = this.afDB.list('/Ad-blocks').valueChanges()
-        .subscribe(data => { 
-            data.forEach (element => { 
+      .subscribe(data => { 
+          data.forEach (element => { 
+          if (this.loadedwebSites.indexOf(element['siteName']) == -1) {
             this.loadedwebSites.push(element['siteName']);
-          });       
-        });  
+          }
+        });       
+      });  
   }
 
   ionViewDidLoad() {
@@ -55,6 +55,8 @@ export class SearchAdblocksPage {
   }
 
   showAdblocks(webSite: string) {
+    // clear input field should be added here ...
+    
     this.click_status = false;
     this.showHeading = true;
     this.searchedSite = webSite;
@@ -62,8 +64,10 @@ export class SearchAdblocksPage {
       .valueChanges()
       .subscribe(block => {
         this.ADblocks = block;
-        console.log("Adblock : ", this.ADblocks);               
-        this.getRecordDetails(this.ADblocks[0]['blockId']);
+        console.log("Adblock : ", this.ADblocks);       
+        for (var index = 0; index < block.length; index++) {
+          this.getRecordDetails(this.ADblocks[index]['blockId']);
+        }
     });
     
   }
