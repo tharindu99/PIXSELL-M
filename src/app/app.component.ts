@@ -8,6 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
 import { AdBlocksPage } from '../pages/ad-blocks/ad-blocks';
 
+import { AdBlockViewComponent } from '../components/ad-block-view/ad-block-view'
+
 
 
 @Component({

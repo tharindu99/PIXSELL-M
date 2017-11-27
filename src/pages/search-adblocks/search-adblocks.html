@@ -23,7 +23,7 @@
     
       <div *ngFor="let ADblock of ADblocks">
         <div *ngFor="let Record of Records">
-          <ion-card >
+          <ion-card type="button" (click)="more_adblock(ADblock,Records)">
             <ion-grid>    
               <ion-row>
 
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-    
+    <ad-block-view></ad-block-view>
     
     </ion-content>
     

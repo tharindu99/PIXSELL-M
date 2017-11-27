@@ -17,6 +17,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase,AngularFireDatabaseModule } from 'angularfire2/database';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 
+
+
 export const firbaseConfig = {
   apiKey: "AIzaSyCGepIUArhjSjgUTpkL877H60j6avh6zi0",
   authDomain: "pixsell-m-temp.firebaseapp.com",
@@ -33,7 +35,8 @@ export const firbaseConfig = {
     LoginPage,
     AboutPage,
     AdBlocksPage,
-    AdblockTabsPage
+    AdblockTabsPage,
+   
   ],
   imports: [
     BrowserModule,

@@ -81,6 +81,10 @@ export class SearchAdblocksPage {
     });     
   }  
 
+  more_adblock(Adblock:any,Record:any){
+    console.log("more details ..");
+  }
+
 }
 
 /*
