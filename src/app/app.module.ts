@@ -15,7 +15,7 @@ import { AdblockTabsPage } from '../pages/adblock-tabs/adblock-tabs';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase,AngularFireDatabaseModule } from 'angularfire2/database';
-import { DataServiceProvider } from '../providers/data-service/data-service';
+import { AdblockDataProvider } from '../providers/adblock-data/adblock-data';
 
 
 
@@ -59,7 +59,8 @@ export const firbaseConfig = {
     SplashScreen,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider,
+    AdblockDataProvider,
+   
    
   ]
 })

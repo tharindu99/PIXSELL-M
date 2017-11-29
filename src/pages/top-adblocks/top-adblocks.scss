@@ -21,4 +21,11 @@ page-top-adblocks {
         color:#ff0000 !important;
         
     }
+    .card-content {
+        padding: 0px 16px;
+        max-height: 0;
+    }
+    .card-header{
+        border: 1px solid rgb(138, 128, 128);
+    }
 }

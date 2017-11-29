@@ -1,16 +1,22 @@
 import { Renderer,OnInit,ViewChild,Component } from '@angular/core';
+import { AdblockDataProvider } from '../../providers/adblock-data/adblock-data';
+
 
 @Component({ 
   selector: 'ad-block-view',
-  templateUrl: 'ad-block-view.html'
+  templateUrl: 'ad-block-view.html' 
 })
+
 export class AdBlockViewComponent implements OnInit {
 
   adblock_expanded = false;
   @ViewChild("cc") cardContent: any;
+  ADblocks;
+  Records;
 
-  constructor( public renderer:Renderer) {
+  constructor( private ADblock:AdblockDataProvider,public renderer:Renderer) {
     console.log('Hello AdBlockViewComponent Component');
+    console.log(ADblock);
     
   }
 
@@ -31,5 +37,9 @@ export class AdBlockViewComponent implements OnInit {
     }
     this.adblock_expanded = !this.adblock_expanded;
   }
+
+ 
+
+
 
 }
