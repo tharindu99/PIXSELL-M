@@ -22,9 +22,11 @@ export class SuggestAdblocksPage {
   @ViewChild("cc") cardContent: any;
   @ViewChild('priceChart') priceChart:ElementRef;
   lineChart: any;
+  Math: any;
   
   constructor(private renderer :Renderer,public navCtrl: NavController,
      public navParams: NavParams,public afDB:AngularFireDatabase) {
+       this.Math = Math;
 
     this.afDB.list('Ad-blocks', ref => ref.orderByChild('siteName').limitToFirst(5))
     .valueChanges()

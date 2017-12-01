@@ -21,8 +21,8 @@
               </ion-item>
             </ion-col>
             <ion-col col-8>
-            <h2>    
-              <small>Rs</small> {{(Record.pricePerPx)| number:'1.2-2'}} |
+            <h2>   
+               <small>Rs</small> {{Record.pricePerPx| number:'1.2-2'}} | 
               <!-- <small>Rs</small> {{(ADblock.expectPrice/(ADblock.width*ADblock.height))| number:'1.2-2'}} -->
               <small>Risk</small> {{(ADblock.ownerSetRisk)}}
             </h2>
@@ -30,13 +30,14 @@
             <p>{{Record.progressRate| number:'1.2-2'}}%</p>
             </ion-col>
             <ion-col col-2>
-              <round-progress  [current]="(ADblock.width*ADblock.height) - Record.availablePx" [max]="(ADblock.width*ADblock.height)" [radius]="20" [stroke]="5"></round-progress> 
-              <span class="icon-text-small">{{(100-(Record.availablePx/(ADblock.width*ADblock.height))*100)| number:'1.2-2'}}%</span>       
+              <round-progress  [current]="Math.abs(100-(Record.availablePx/(ADblock.width*ADblock.height))*100)" [max]="100" [radius]="20" [stroke]="5"></round-progress> 
+              <span class="icon-text-small">{{Math.abs(100-(Record.availablePx/(ADblock.width*ADblock.height))*100)| number:'1.2-2'}}%</span>       
             </ion-col>
          </ion-row>  
         </ion-card-header>  
         <ion-card-content #cc >
             <canvas #priceChart></canvas>
+            <button ion-button full>Invest</button>
         </ion-card-content>
         </ion-grid> 
       </ion-card>

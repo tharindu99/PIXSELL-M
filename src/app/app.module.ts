@@ -20,12 +20,12 @@ import { AdblockDataProvider } from '../providers/adblock-data/adblock-data';
 
 
 export const firbaseConfig = {
-  apiKey: "AIzaSyCGepIUArhjSjgUTpkL877H60j6avh6zi0",
-  authDomain: "pixsell-m-temp.firebaseapp.com",
-  databaseURL: "https://pixsell-m-temp.firebaseio.com",
-  projectId: "pixsell-m-temp",
-  storageBucket: "pixsell-m-temp.appspot.com",
-  messagingSenderId: "706758479141"
+  apiKey: "AIzaSyAmCUFZR-oF8eqxhY24_iVtF_cZES4Tz8s",
+  authDomain: "pixsell-m.firebaseapp.com",
+  databaseURL: "https://pixsell-m.firebaseio.com",
+  projectId: "pixsell-m",
+  storageBucket: "pixsell-m.appspot.com",
+  messagingSenderId: "85658630439"
 }
 
 @NgModule({

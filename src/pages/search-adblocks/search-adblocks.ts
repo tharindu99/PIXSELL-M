@@ -26,9 +26,12 @@ export class SearchAdblocksPage implements AfterViewInit {
   showHeading = false;
   ADblocks;
   Records;
+  Math: any;
 
   constructor(private renderer :Renderer ,public afDB: AngularFireDatabase, public navCtrl: NavController,
     public navParams: NavParams) {
+
+  this.Math = Math;
     this.subscription = this.afDB.list('/Ad-blocks').valueChanges()
       .subscribe(data => { 
           data.forEach (element => { 

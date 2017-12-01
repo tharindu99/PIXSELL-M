@@ -32,7 +32,7 @@
               </ion-col>
               <ion-col col-8>
               <h2>    
-                <small>Rs</small> {{(Record.pricePerPx)| number:'1.2-2'}} |
+                <small>Rs</small> {{Record.pricePerPx| number:'1.2-2'}} |
                 <!-- <small>Rs</small> {{(ADblock.expectPrice/(ADblock.width*ADblock.height))| number:'1.2-2'}} -->
                 <small>Risk</small> {{(ADblock.ownerSetRisk)}}
               </h2>
@@ -47,6 +47,7 @@
           </ion-card-header>  
           <ion-card-content #cc >
               <canvas #priceChart></canvas>
+              
           </ion-card-content>
           </ion-grid> 
         </ion-card>
